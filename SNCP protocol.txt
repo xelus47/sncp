@@ -1,0 +1,44 @@
+Shell and neural connection protocol (sncp) status sheet
+
+Usage:
+"""
+SNCP/<sncp version> <command> <parameter/path>
+header-name:header-info
+
+Body
+"""
+
+Requests:
+
+GET -- request data from the shell
+PING -- Pong (Deprecated. Use <get ping> instead)
+DO -- run some kind of action
+
+
+DO requests:
+DO Connect
+DO Status (status reserved for connected clients)
+
+
+
+Responses:
+
+// Success
+200 OK -- all ok
+201 Created
+202 Accepted
+
+// (NTP 1.1+) redirect
+300 Not Modified
+301 Moved Perminantly
+
+// Client error
+400 Bad Request
+401 Failed Auth
+402 (not used)
+403 Forbidden (not used)
+404 Not Found (not used)
+
+// Shell error
+500 Internal shell error
+501 SNCP version not supported
